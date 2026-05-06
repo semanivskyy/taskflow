@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow — Gestor de Tareas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header>
+    <nav>
+      <div class="logo">
+        <span class="logo-icon">✓</span>
+        <h1>TaskFlow</h1>
+      </div>
+      <div class="nav-stats">
+        <span id="contador-total">0 tareas</span>
+        <span id="contador-completadas">0 completadas</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== MAIN ========== -->
+  <main>
+
+    <!-- Formulario para nueva tarea -->
+    <section class="seccion-formulario">
+      <h2>Nueva Tarea</h2>
+      <form id="form-tarea" novalidate>
+        <div class="form-grid">
+
+          <div class="form-grupo">
+            <label for="titulo">Título *</label>
+            <input type="text" id="titulo" name="titulo"
+                   placeholder="¿Qué necesitas hacer?"
+                   required minlength="3" maxlength="100"
+                   autocomplete="off">
+            <span class="error-msg" id="error-titulo"></span>
+          </div>
+
+          <div class="form-grupo">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion"
+                      placeholder="Detalles adicionales..."
+                      rows="2" maxlength="300"></textarea>
+          </div>
+
+          <div class="form-grupo">
+            <label for="categoria">Categoría</label>
+            <select id="categoria" name="categoria">
+              <option value="general">General</option>
+              <option value="estudio">Estudio</option>
+              <option value="practica">Práctica</option>
+              <option value="proyecto">Proyecto</option>
+              <option value="personal">Personal</option>
+            </select>
+          </div>
+
+          <div class="form-grupo">
+            <label>Prioridad</label>
+            <div class="radio-grupo">
+              <label class="radio-label">
+                <input type="radio" name="prioridad" value="baja">
+                <span class="radio-custom baja"></span> Baja
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="prioridad" value="media" checked>
+                <span class="radio-custom media"></span> Media
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="prioridad" value="alta">
+                <span class="radio-custom alta"></span> Alta
+              </label>
+            </div>
+          </div>
+
+        </div>
+        <button type="submit" class="btn-primario">Agregar Tarea</button>
+      </form>
+    </section>
+
+    <!-- Búsqueda -->
+    <section class="seccion-busqueda">
+        <input type="text" id="input-busqueda" 
+             placeholder="🔍 Buscar tarea por título..."
+            autocomplete="off">
+    </section>
+    
+    <!-- Filtros -->
+    <section class="seccion-filtros">
+      <div class="filtros-contenedor">
+        <button class="btn-filtro activo" data-filtro="todas">Todas</button>
+        <button class="btn-filtro" data-filtro="estudio">Estudio</button>
+        <button class="btn-filtro" data-filtro="practica">Práctica</button>
+        <button class="btn-filtro" data-filtro="proyecto">Proyecto</button>
+        <button class="btn-filtro" data-filtro="personal">Personal</button>
+        <button class="btn-filtro" data-filtro="general">General</button>
+      </div>
+    </section>
+
+    <!-- Lista de tareas -->
+    <section class="seccion-tareas">
+      <div id="lista-tareas" class="tareas-grid"></div>
+      <div id="sin-tareas" class="mensaje-vacio" hidden>
+        <p>📋 No hay tareas aún. ¡Crea una!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <p>TaskFlow &copy; 2026 — Práctica Integradora ISC 2º Semestre</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
